@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Motabbir Hossain Sourov | Flutter Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --dark-navy: #0a192f;
+            --navy: #112240;
+            --light-navy: #233554;
+            --slate: #8892b0;
+            --light-slate: #a8b2d1;
+            --lightest-slate: #ccd6f6;
+            --accent: #F5A623;
+            /* Amber/Orange */
+        }
+
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark-navy);
+            color: var(--light-slate);
+        }
+
+        .glass-header {
+            background-color: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--light-navy);
+        }
+
+        .accent-color {
+            color: var(--accent);
+        }
+
+        .section-heading {
+            text-align: center;
+            font-size: 2rem;
+            /* text-3xl */
+            font-weight: 700;
+            /* font-bold */
+            margin-bottom: 1rem;
+            color: var(--lightest-slate);
+        }
+
+        @media (min-width: 768px) {
+            .section-heading {
+                font-size: 2.25rem;
+                /* md:text-4xl */
+            }
+        }
+
+        .section-subheading {
+            text-align: center;
+            font-size: 1.125rem;
+            /* text-lg */
+            color: var(--slate);
+            margin-bottom: 4rem;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.2s ease-in-out;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--dark-navy);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent);
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+
+            background-color: rgba(245, 166, 35, 0.1);
+            /* This is the new orange color */
+
+            transform: translateY(-2px);
+        }
+
+        .skill-card {
+            background-color: var(--light-navy);
+            border: 1px solid var(--light-navy);
+            transition: all 0.25s ease-in-out;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+        }
+
+        /* Project Card Hover */
+        .project-card {
+            background-color: var(--light-navy);
+            transition: all 0.3s ease-in-out;
+            border: 1px solid var(--light-navy);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-card .project-image {
+            transition: filter 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            filter: brightness(1.1);
+        }
+
+        /* Header Nav Link Hover */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--accent);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Footer Icon Hover */
+        .footer-icon {
+            transition: all 0.2s ease-in-out;
+        }
+
+        .footer-icon:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+
+<body class="antialiased">
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#home"
+                class="text-3xl font-bold tracking-tighter transition-transform duration-300 hover:scale-105"
+                style="color: var(--lightest-slate);">
+                MHS<span style="color: var(--accent);">.</span>
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-lg nav-link">About</a>
+                <a href="#skills" class="text-lg nav-link">Skills</a>
+                <a href="#projects" class="text-lg nav-link">Projects</a>
+                <a href="#contact" class="text-lg nav-link">Contact</a>
+                <a href="Final CV.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline text-sm">
+                    Resume
+                </a>
+            </nav>
+            <button id="mobile-menu-button" class="md:hidden" style="color: var(--lightest-slate);">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12" />
+                    <line x1="4" x2="20" y1="6" y2="6" />
+                    <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 z-40" style="background-color: var(--dark-navy);">
+        <div class="flex flex-col items-center justify-center h-full space-y-10 text-2xl">
+            <a href="#about" class="mobile-menu-link">About</a>
+            <a href="#skills" class="mobile-menu-link">Skills</a>
+            <a href="#projects" class="mobile-menu-link">Projects</a>
+            <a href="#contact" class="mobile-menu-link">Contact</a>
+            <a href="Final CV.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-outline text-xl mt-4">
+                Resume
+            </a>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-6">
+        <!-- Hero Section -->
+        <section id="home" class="min-h-screen flex items-center justify-center text-center">
+            <div>
+                <h1
+                    class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-lightest-slate">
+                    Hi, I'm <span class="accent-color">Motabbir Hossain Sourov</span>
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-slate max-w-3xl mx-auto">
+                    A passionate Flutter Developer dedicated to crafting beautiful, high-performance mobile applications
+                    for both iOS and Android.
+                </p>
+                <div class="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#projects" class="btn btn-primary font-bold py-3 px-8 rounded-md text-lg">
+                        <i data-lucide="folder-kanban"></i>
+                        <span>View My Work</span>
+                    </a>
+                    <a href="#contact" class="btn btn-outline font-bold py-3 px-8 rounded-md text-lg">
+                        <i data-lucide="send"></i>
+                        <span>Get in Touch</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Me -->
+        <section id="about" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading">About Me</h2>
+                <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 lg:gap-16">
+                    <div class="md:w-1/3">
+                        <div class="border-2 rounded-2xl p-2 transform hover:rotate-2 transition-transform duration-300 bg-navy"
+                            style="border-color: var(--accent);">
+                            <img src="pic.png" alt="A photo of Motabbir Hossain Sourov"
+                                class="rounded-xl w-full aspect-square object-cover shadow-lg">
+                        </div>
+                    </div>
+                    <div class="md:w-2/3 text-center md:text-left">
+                        <p class="text-lg text-slate leading-relaxed mb-4">
+                            Hello! I'm a software developer specializing in building elegant and efficient mobile
+                            applications using Flutter. My journey into programming started with a fascination for
+                            solving real-world problems with technology, which led me to the world of cross-platform
+                            development.
+                        </p>
+                        <p class="text-lg text-slate leading-relaxed">
+                            I thrive on turning complex ideas into simple, beautiful, and intuitive apps. I am always
+                            eager to learn new technologies and improve my craft. When I'm not coding, I enjoy exploring
+                            new tech gadgets, reading, and contributing to open-source projects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32 bg-navy/50">
+            <div class="container mx-auto px-6">
+                <h2 class="section-heading">My Tech Stack</h2>
+                <p class="section-subheading">Technologies I've been working with recently</p>
+                <div class="max-w-4xl mx-auto grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                    <div class="skill-card flex flex-col items-center p-6 rounded-xl">
+                        <img src="https://cdn.simpleicons.org/flutter/02569B" alt="Flutter" class="h-16 w-16 mb-4">
+                        <span class="font-semibold text-lightest-slate">Flutter</span>
+                    </div>
+                    <div class="skill-card flex flex-col items-center p-6 rounded-xl">
+                        <img src="https://cdn.simpleicons.org/dart/0175C2" alt="Dart" class="h-16 w-16 mb-4">
+                        <span class="font-semibold text-lightest-slate">Dart</span>
+                    </div>
+                    <div class="skill-card flex flex-col items-center p-6 rounded-xl">
+                        <img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="Firebase" class="h-16 w-16 mb-4">
+                        <span class="font-semibold text-lightest-slate">Firebase</span>
+                    </div>
+                    <div class="skill-card flex flex-col items-center p-6 rounded-xl">
+                        <i data-lucide="figma" class="w-16 h-16 mb-4 accent-color"></i>
+                        <span class="font-semibold text-lightest-slate">Figma</span>
+                    </div>
+                    <div class="skill-card flex flex-col items-center p-6 rounded-xl">
+                        <i data-lucide="git-branch-plus" class="w-16 h-16 mb-4 accent-color"></i>
+                        <span class="font-semibold text-lightest-slate">Git</span>
+                    </div>
+                    <div class="skill-card flex flex-col items-center p-6 rounded-xl">
+                        <i data-lucide="database" class="w-16 h-16 mb-4 accent-color"></i>
+                        <span class="font-semibold text-lightest-slate">REST APIs</span>
+                    </div>
+                    <div class="skill-card flex flex-col items-center p-6 rounded-xl">
+                        <i data-lucide="smartphone-charging" class="w-16 h-16 mb-4 accent-color"></i>
+                        <span class="font-semibold text-lightest-slate">BLoC</span>
+                    </div>
+                    <div class="skill-card flex flex-col items-center p-6 rounded-xl">
+                        <i data-lucide="test-tubes" class="w-16 h-16 mb-4 accent-color"></i>
+                        <span class="font-semibold text-lightest-slate">Testing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-24 md:py-32">
+            <h2 class="section-heading text-3xl md:text-4xl font-bold flex items-center justify-center mb-12"
+                style="color: var(--lightest-slate);">
+                Some Things I've Built
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Project 1 -->
+                <div class="project-card rounded-lg flex flex-col overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
+                        alt="Dashboard UI for a fitness application" class="project-image w-full h-52 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2" style="color: var(--lightest-slate);">Fitness Tracker App
+                        </h3>
+                        <p class="flex-grow mb-4" style="color: var(--slate);">A mobile app to track workouts, set
+                            fitness goals, and visualize progress with detailed charts.</p>
+                        <p class="font-mono text-sm mb-4" style="color: var(--slate);">Flutter • Dart • SQLite •
+                            Provider</p>
+                        <div class="flex items-center space-x-4 text-slate">
+                            <a href="https://github.com/motabbir006/Flutter-Project/tree/Fitness-Tracker-App"
+                                class="hover:text-accent transition-colors" aria-label="GitHub"><i
+                                    data-lucide="github"></i></a>
+                            <a href="#" class="hover:text-accent transition-colors" aria-label="External Link"><i
+                                    data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="project-card rounded-lg flex flex-col overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1526628953301-3e589a6a8b74?q=80&w=2006&auto=format&fit=crop"
+                        alt="UI for an e-commerce application on a smartphone"
+                        class="project-image w-full h-52 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2" style="color: var(--lightest-slate);">E-Commerce App</h3>
+                        <p class="flex-grow mb-4" style="color: var(--slate);">A full-featured e-commerce application
+                            with product catalogs, shopping cart, and payment integration.</p>
+                        <p class="font-mono text-sm mb-4" style="color: var(--slate);">Flutter • Firebase • BLoC</p>
+                        <div class="flex items-center space-x-4 text-slate">
+                            <a href="https://github.com/motabbir006/Flutter-Project/tree/E-Commerce-App"
+                                class="hover:text-accent transition-colors" aria-label="GitHub"><i
+                                    data-lucide="github"></i></a>
+                            <a href="#" class="hover:text-accent transition-colors" aria-label="External Link"><i
+                                    data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 -->
+                <div class="project-card rounded-lg flex flex-col overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1611262588024-d12430b98920?q=80&w=1974&auto=format&fit=crop"
+                        alt="UI for a real-time chat application" class="project-image w-full h-52 object-cover">
+                    <div class="p-6 flex flex-col flex-grow">
+                        <h3 class="text-xl font-bold mb-2" style="color: var(--lightest-slate);">Real-Time Chat App</h3>
+                        <p class="flex-grow mb-4" style="color: var(--slate);">A real-time chat application with
+                            one-on-one messaging, group chats, and push notifications.</p>
+                        <p class="font-mono text-sm mb-4" style="color: var(--slate);">Flutter • Firebase • GetX</p>
+                        <div class="flex items-center space-x-4 text-slate">
+                            <a href="https://github.com/motabbir006/Flutter-Project/tree/Real-Time-Chat-App"
+                                class="hover:text-accent transition-colors" aria-label="GitHub"><i
+                                    data-lucide="github"></i></a>
+                            <a href="#" class="hover:text-accent transition-colors" aria-label="External Link"><i
+                                    data-lucide="external-link"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32">
+            <div class="container mx-auto px-6">
+
+                <div class="max-w-3xl mx-auto text-center">
+
+                    <h2 class="text-2xl font-semibold accent-color mb-4">What's Next?</h2>
+
+                    <h3 class="text-4xl md:text-5xl font-bold mb-6" style="color: var(--lightest-slate);">Get In Touch
+                    </h3>
+
+                    <p class="text-lg text-slate leading-relaxed mb-12">
+                        I'm actively seeking new opportunities and my inbox is always open. Whether you have a project
+                        in mind, a question, or just want to connect, I'd love to hear from you.
+                    </p>
+
+                    <form action="https://formsubmit.co/sourov00P@gmail.com" method="POST" class="text-left">
+
+                        <input type="hidden" name="_next" value="https://motabbir006.github.io/portfolio/thankyou.html">
+                        <input type="hidden" name="_captcha" value="false">
+                        <div class="mb-5">
+                            <label for="name" class="block mb-2 text-sm font-medium text-light-slate">Full Name</label>
+                            <input type="text" id="name" name="name"
+                                class="bg-navy border-navy text-black text-sm rounded-lg focus:ring-1 focus:ring-accent focus:border-accent block w-full p-3.5 transition-colors placeholder:text-slate"
+                                placeholder="Motabbir Hossain Sourov" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="email" class="block mb-2 text-sm font-medium text-light-slate">Email
+                                Address</label>
+                            <input type="email" id="email" name="email"
+                                class="bg-navy border-navy text-black text-sm rounded-lg focus:ring-1 focus:ring-accent focus:border-accent block w-full p-3.5 transition-colors placeholder:text-slate"
+                                placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="mb-5">
+                            <label for="message" class="block mb-2 text-sm font-medium text-light-slate">Message</label>
+                            <textarea id="message" name="message" rows="5"
+                                class="bg-navy border-navy text-black text-sm rounded-lg focus:ring-1 focus:ring-accent focus:border-accent block w-full p-3.5 transition-colors placeholder:text-slate"
+                                placeholder="Your message here..." required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary font-bold py-3 px-8 rounded-md text-lg">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-8">
+        <div class="container mx-auto px-6 text-center text-slate">
+            <div class="flex justify-center space-x-6 mb-4">
+                <a href="https://github.com/motabbir006" class="footer-icon"><i data-lucide="github"
+                        class="w-6 h-6"></i></a>
+                <a href="https://www.linkedin.com/in/motabbir-hossain-sourov06" class="footer-icon"><i
+                        data-lucide="linkedin" class="w-6 h-6"></i></a>
+                <a href="#" class="footer-icon"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+            </div>
+            <p class="text-sm">&copy; 2025 Motabbir Hossain Sourov. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Header scroll effect from new design
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-3', 'glass-header');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.remove('py-3', 'glass-header');
+                header.classList.add('py-4');
+            }
+        });
+
+        // Mobile menu toggle from new design
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+        function toggleMenu() {
+            mobileMenu.classList.toggle('hidden');
+        }
+
+        mobileMenuButton.addEventListener('click', toggleMenu);
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+    </script>
+</body>
+
+</html>
